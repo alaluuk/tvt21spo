@@ -1,12 +1,15 @@
 const express=require('express');
+const dotenv=require('dotenv');
 
 const app=express();
+dotenv.config();
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
 app.get('/',function(req,res){
-    res.send("Terve");
+    res.send("Terve Nodemon asennettu");
 });
 
 app.use(function(req,res,next){
@@ -33,5 +36,5 @@ app.post('/addName',function(req,res){
     console.log(req.body);
 });
 
-const port=3000;
-app.listen(3000);
+//const port=3000;
+app.listen(process.env.PORT);
